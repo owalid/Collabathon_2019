@@ -7,7 +7,6 @@
 <script>
 import Chart from "chart.js";
 
-<<<<<<< HEAD
 export const planetChartData = {
   type: "line",
   data: {
@@ -98,19 +97,3 @@ export default {
   }
 };
 </script>
-=======
-export default {
-  props: {
-    dataChart: Array
-  },
-  watch: {
-    dataChart: async function(newVal, oldVal) {
-      this.$emit("update:dataChart", newVal);
-    }
-  },
-  created() {
-    console.log(this.dataChart)
-  },
-};
-</script>
->>>>>>> origin/front_oelayad
