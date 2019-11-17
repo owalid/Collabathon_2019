@@ -2,6 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { apiRouter } from './router/index';
 import { connectDb } from './config/database';
+const path = require('path');
+const history = require('connect-history-api-fallback');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -11,13 +13,6 @@ connectDb();
 app.use(cors());
 app.use(bodyParser.json({ limit: '10mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, authorization');
-    res.header('Access-Control-Allow-Credentials', true);
-    next();
-  });
-
 app.use('/api', apiRouter);
 
 const staticFileMiddleware = express.static(path.join(__dirname + '/dist'));
