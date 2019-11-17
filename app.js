@@ -20,14 +20,21 @@ app.use((req, res, next) => {
 
 app.use('/api', apiRouter);
 
-if (process.env.NODE_ENV === 'production') {
-  // Static folder
-  app.use(express.static(__dirname + '/public/'));
+const staticFileMiddleware = express.static(path.join(__dirname + '/dist'));
 
-  // Handle SPA
-  app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
-}
+app.use(staticFileMiddleware);
+app.use(history({
+    disableDotRule: true,
+    verbose: true
+}));
+app.use(staticFileMiddleware);
 
-const port = process.env.PORT || 5000;
+app.get('/', function(req, res) {
+    res.render(path.join(__dirname + '/dist/index.html'));
+});
 
-app.listen(port, () => console.log(`Server started on port ${port}`));
+
+let server = app.listen(process.env.PORT || 5000, function() {
+  let port = server.address().port;
+  console.log("App now running on port", port);
+});
