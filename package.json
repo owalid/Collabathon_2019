@@ -27,9 +27,7 @@
     "path": "^0.12.7",
     "path-to-regexp": "^3.1.0",
     "saslprep": "^1.0.3",
-    "uuidv1": "^1.6.14"
-  },
-  "devDependencies": {
+    "uuidv1": "^1.6.14",
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
     "babel-cli": "^6.26.0",
@@ -42,5 +40,6 @@
     "babel-preset-es2016": "^6.24.1",
     "eslint": "^6.0.1",
     "eslint-plugin-import": "^2.18.0"
-  }
+  },
+
 }
