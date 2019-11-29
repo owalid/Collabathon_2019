@@ -8,6 +8,14 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+app.use(function (req, res, next) {
+    if (req.header('x-forwarded-proto') === 'http') {
+      res.redirect(301, 'https://' + req.hostname + req.url);
+      return
+    }
+    next()
+  });
+
 
 connectDb();
 app.use(cors());
